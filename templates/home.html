@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Home Page</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+    <br>
+
+<h1><p><span id="time"></span></p></h1>
+
+
+<script>
+var dt = new Date();
+document.getElementById("date").innerHTML = (("0"+dt.getDate()).slice(-2)) +"."+ (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (dt.getFullYear());
+</script>
+<script>
+var dt = new Date();
+document.getElementById("time").innerHTML = (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
+</script>
+</div>
+
+
+<div class="container">
+<h3><p>{{ source }} /   {{ date }}</p></h3>
+    <table class="centerTable" align="left" style="margin: 0px auto;">
+      <thead>
+        <tr>
+            <th width="100"><p>Currency</p></th>
+            <th width="100"><p>to RON</p></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        {% for rate in rates %}
+          <td>{{ rate.currency }}</td>
+          <td> {{ rate.rate }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+
+{% endblock %}

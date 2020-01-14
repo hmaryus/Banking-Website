@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Deposit</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <br>
+    <br>
+
+<form method="POST" action="{% url 'accounts:deposit' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="DEPOSIT"/>
+</form>
+
+</div>
+
+{% endblock %}

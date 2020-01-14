@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Transactions History</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <br>
+    <h2><b>Transaction history</b></h2>
+    <br>
+
+    <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+            <th width="10">#</th>
+            <th width="30">Date/Time</th>
+            <th>Details</th>
+            <th>Amount ($)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+    {% for entry in all_history %}
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{entry.timestamp}}</td>
+            <td>{{entry.type}}</td>
+            <td>{{entry.amount}}</td>
+        </tr>
+    {% endfor %}
+    {% endblock %}

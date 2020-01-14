@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Withdraw</title>
+{% endblock %}
+
+{% block body %}
+{% include 'messages.html' %}
+<div class="container">
+    <br>
+    <br>
+<div class="alert alert-info" role="alert"><h4>Your Current Account Balance is {{ user.account_balance }} $</h4></div>
+
+<form method="POST" action="{% url 'accounts:withdraw' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="WITHDRAW"/>
+</form>
+
+
+{% endblock %}
